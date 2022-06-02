@@ -47,64 +47,57 @@ class CardApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 25,
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.phone,
-                      size: 30,
-                      color: Colors.teal.shade500,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "+44 323 3929 392",
-                      style: GoogleFonts.sourceCodePro(
-                          textStyle: TextStyle(
-                        color: Colors.teal.shade900,
-                        fontSize: 20,
-                      )),
-                    ),
-                  ],
+              SizedBox(
+                height: 20,
+                width: 200,
+                child: Divider(
+                  color: Colors.teal.shade100,
                 ),
               ),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 25,
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.email,
-                      size: 30,
-                      color: Colors.teal.shade500,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "wonkwh@gmail.com",
-                      style: GoogleFonts.sourceCodePro(
-                          textStyle: TextStyle(
-                        color: Colors.teal.shade900,
-                        fontSize: 20,
-                      )),
-                    ),
-                  ],
-                ),
+              _getCard(
+                contents: "+32 010 3424 3234",
+                icon: Icons.phone,
               ),
+              _getCard(
+                contents: "wonkwh@email.com",
+                icon: Icons.email,
+              )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCard({String? contents, IconData? icon}) {
+    String contents2;
+    IconData leadingIconData;
+    if (contents == null || icon == null) {
+      contents2 = "empty";
+      leadingIconData = Icons.abc;
+    } else {
+      contents2 = contents;
+      leadingIconData = icon;
+    }
+    return Card(
+      color: Colors.white,
+      // padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 25,
+      ),
+      child: ListTile(
+        leading: Icon(
+          leadingIconData,
+          color: Colors.teal,
+        ),
+        title: Text(
+          contents2,
+          style: GoogleFonts.sourceCodePro(
+              textStyle: TextStyle(
+            color: Colors.teal.shade900,
+            fontSize: 20,
+          )),
         ),
       ),
     );
