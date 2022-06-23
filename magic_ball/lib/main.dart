@@ -39,11 +39,11 @@ class _BallState extends State<Ball> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: TextButton(
+      child: GestureDetector(
         child: Image.asset('images/ball$selectedIndex.png'),
-        onPressed: () {
+        onTap: () {
           setState(() {
-            selectedIndex = Random().nextInt(4) + 1;
+            selectedIndex = Random().nextInt(5) + 1;
           });
         },
       ),
